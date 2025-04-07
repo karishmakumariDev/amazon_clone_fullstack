@@ -1,0 +1,91 @@
+.products_section {
+    width: 95%;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.products_section > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.products_section h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #111;
+}
+
+.view_btn {
+    padding: 6px 16px;
+    background-color: #febd69; 
+    border: none;
+    border-radius: 4px;
+    color: #111;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.view_btn:hover {
+    background-color: #f3a847;
+}
+
+
+.carousel-container {
+    margin-top: 20px;
+}
+
+
+.products_items {
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.products_items:hover {
+    transform: scale(1.05);
+}
+
+.product_img img {
+    width: auto;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.products_name {
+    font-size: 1rem;
+    color: #0f1111;
+    font-weight: 600;
+}
+
+.products_offer {
+    color: #007600;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 4px 0;
+}
+
+.products_explore {
+    color: #565959;
+    font-size: 0.85rem;
+}
+
+/* Optional: Dots style (if you want later to enable showDots: true) */
+.custom-dot-list-style li {
+    background: #ddd;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+
+.custom-dot-list-style .react-multi-carousel-dot--active {
+    background: #f08804; /* Amazon orange */
+}
