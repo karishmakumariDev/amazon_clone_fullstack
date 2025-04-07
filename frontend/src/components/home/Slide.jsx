@@ -20,11 +20,12 @@ import "./Slide.css";
     }
 };
 
-const slide = () => {
+const slide = ({title}) => {
+    
   return (
     <div className='products_section'>
         <div>
-            <h3>Deal of the day</h3>
+            <h3>{title}</h3>
             <button className="view_btn">View All</button>
         </div>
         <Divider/>
