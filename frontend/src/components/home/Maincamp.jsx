@@ -2,7 +2,7 @@ import React from 'react'
 import Banner from './Banner'
 import './Home.css';
 import Slide from './Slide';
-import Footer from '../footer/footer';
+
 
 
 const Maincamp = () => {
@@ -15,7 +15,6 @@ const Maincamp = () => {
             <Slide title="Popular items this season"/>
             <Slide title="Best Sellers in Clothing, Shoes & Jewelry"/>
         </div>
-        <Footer/>
     </div>
   )
 }
