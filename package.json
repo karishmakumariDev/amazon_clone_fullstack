@@ -1,13 +1,14 @@
 {
   "name": "amazon_clone_fullstack",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "backend/app.js",
- "scripts": {
-  "start": "node backend/app.js",
-  "dev": "nodemon backend/app.js",
-  "test": "echo \"Error: no test specified\" && exit 1"
-},
+  "scripts": {
+    "start": "node backend/app.js",
+    "dev": "nodemon backend/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/karishmakumariDev/amazon_clone_fullstack.git"
@@ -19,8 +20,12 @@
   },
   "homepage": "https://github.com/karishmakumariDev/amazon_clone_fullstack#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "mongodb": "^6.15.0",
+    "mongoose": "^8.13.2",
     "mongose": "^0.0.2-security",
     "nodemon": "^3.1.9"
   }
