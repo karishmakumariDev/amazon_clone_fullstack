@@ -11,7 +11,7 @@ const Banner = () => {
   const data = [
     {
       name: "Mobile Phones",
-      url: "https://www.amazon.in/s?k=mobile+phones",
+      url: "'https://dummyjson.com/products'",
       //image: post2,
     },
     {
