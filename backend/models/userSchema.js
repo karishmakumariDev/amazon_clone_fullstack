@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique: true, // email unique hoga
+        unique: true, 
         trim: true
     },
     mobile: {
@@ -39,7 +39,7 @@ const userSchema = new mongoose.Schema({
             }
         }
     ],
-    carts: Array // agar cart mein product store karna ho future mein
+    carts: Array 
 }, {
     timestamps: true
 });

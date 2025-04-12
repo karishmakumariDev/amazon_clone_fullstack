@@ -1,15 +1,30 @@
 import dotenv from "dotenv";
 import connectmongose from "./DB/connectmongose.js";
 import express from "express";
+import productRoutes from "./routes/product.routes.js"
+import "./DB/connectmongose.js"
+import cors from 'cors';
+
+
+
 
 dotenv.config();
 
 const app = express();
 app.use(express.json());
-const PORT = process.env.PORT || 8000;
+const corsOptions = {
+    origin: '*', // Allow all origins
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+};
 
+app.use(cors(corsOptions));
+const PORT = 8000;
 
-
+app.get("/check", (req, res) => {
+    res.json({message: "backend working"});
+} )
+app.use("/api", productRoutes);
 async function startServer() {
     try {
         await connectmongose();
@@ -18,6 +33,8 @@ async function startServer() {
         console.log("Error while starting server:", err.message);
     }
 }
+
+
 
 function startNodeServer() {
     app.listen(PORT, () => {
