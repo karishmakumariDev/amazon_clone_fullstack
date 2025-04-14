@@ -5,6 +5,7 @@ import productRoutes from "./routes/product.routes.js"
 import "./DB/connectmongose.js"
 import cors from 'cors';
 import cookieParser from "cookie-parser";
+import authRoutes from "./routes/authRoutes.routes.js"
 
 
 
@@ -26,6 +27,7 @@ app.get("/check", (req, res) => {
     res.json({message: "backend working"});
 } )
 app.use("/api", productRoutes);
+app.use("/api/auth", authRoutes);
 async function startServer() {
     try {
         await connectmongose();

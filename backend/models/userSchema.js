@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
     },
     cpassword: {
         type: String,
-        required: true,
+        required: false,
     },
     tokens: [
         {
@@ -46,4 +46,4 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
-module.exports = User;
+export default User

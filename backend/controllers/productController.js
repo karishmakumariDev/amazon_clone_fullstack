@@ -38,20 +38,20 @@ export const getProducts = async (req, res) => {
 };
 
 
-export const getproductid = async (req, res) => {
-    try {
-      const { id } = req.params;
-      console.log("Get Product By ID:", id);
+// export const getproductid = async (req, res) => {
+//     try {
+//       const { id } = req.params;
+//       console.log("Get Product By ID:", id);
   
-      const product = await Product.findOne({ id: id });
+//       const product = await Product.findOne({ id: id });
   
-      if (!product) {
-        return res.status(404).json({ message: "Product not found" });
-      }
+//       if (!product) {
+//         return res.status(404).json({ message: "Product not found" });
+//       }
   
-      res.status(200).json(product);
-    } catch (error) {
-      res.status(500).json({ message: "Error while getting product", error });
-    }
-  };
+//       res.status(200).json(product);
+//     } catch (error) {
+//       res.status(500).json({ message: "Error while getting product", error });
+//     }
+//   };
   
