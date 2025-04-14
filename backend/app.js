@@ -4,13 +4,14 @@ import express from "express";
 import productRoutes from "./routes/product.routes.js"
 import "./DB/connectmongose.js"
 import cors from 'cors';
-
+import cookieParser from "cookie-parser";
 
 
 
 dotenv.config();
 
 const app = express();
+app.use(cookieParser());
 app.use(express.json());
 const corsOptions = {
     origin: '*', // Allow all origins

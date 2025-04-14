@@ -8,3 +8,11 @@ export const useFetchProduct = () => {
     queryFn: fetchUsers,   
   });
 };
+
+// export const useFetchByProductId = (id) => {
+//   return useQuery({
+//     queryKey: ['products', id],
+//     queryFn: getByProductId(id),
+//   });
+// };
+

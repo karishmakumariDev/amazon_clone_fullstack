@@ -1,6 +1,6 @@
 import React from 'react';
 import './cart.css';
-
+//import { useFetchByProductId } from '../../hooks/useFetchProduct';
 const Cart = () => {
 
 
@@ -56,3 +56,5 @@ const Cart = () => {
 };
 
 export default Cart;
+
+

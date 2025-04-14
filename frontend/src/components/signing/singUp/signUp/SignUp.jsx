@@ -1,31 +1,56 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Signup.css"
 import { NavLink } from 'react-router-dom'
 
-
 const SignUp = () => {
+  const [signupform, setSignupForm] = useState({
+    fullname: "",
+    email: "",
+    password: "",
+  })
+
+  const handleChange = (e) => {
+    console.log("e")
+    const { name, value } = e.target;
+    console.log(name) 
+    console.log(value)
+    setSignupForm({
+      ...signupform,
+      [name]: value,
+    });
+  }
+
+  const handleSubmit = (e) => {
+    console.log(e)
+    e.preventDefault();
+    console.log(signupform);
+  }
+
   return (
     <div className="signup-container">
       <div className="signup-form">
         <div className='navlogo'>
-        <NavLink to="/" activeClassName="active-link">
-        <div className="navbar-logo">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
-            alt="Amazon Logo"
-          />
-          <span>.in</span>
+          <NavLink to="/" activeClassName="active-link">
+            <div className="navbar-logo">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
+                alt="Amazon Logo"
+              />
+              <span>.in</span>
+            </div>
+          </NavLink>
         </div>
-        </NavLink>
-        </div>
+
         <h2>Create Account</h2>
-        <form >
+
+        <form onSubmit={handleSubmit}>
           <label>Your Name</label>
           <input
             type="text"
-            name="name"
-            
+            name="fullname"
             placeholder="First and last name"
+            value={signupform.fullname}
+            onChange={handleChange}
             required
           />
 
@@ -34,6 +59,8 @@ const SignUp = () => {
             type="email"
             name="email"
             placeholder="Enter your email"
+            value={signupform.email}
+            onChange={handleChange}
             required
           />
 
@@ -42,6 +69,8 @@ const SignUp = () => {
             type="password"
             name="password"
             placeholder="At least 6 characters"
+            value={signupform.password}
+            onChange={handleChange}
             required
           />
 
