@@ -7,13 +7,12 @@ export const registerUser = async (req, res) => {
         console.log("Calling register");
         console.log(req.body);
 
-        const { firstname, lastname, email, password, mobile } = req.body;
+        const { firstname, email, password,mobile} = req.body;
 
         console.log("firstName",firstname);
-        console.log("lastname",lastname);
         console.log("email",email);
         console.log("password",password);
-        console.log("mobile",mobile);
+
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         console.log("emailRegex",emailRegex);
@@ -21,7 +20,7 @@ export const registerUser = async (req, res) => {
             return res.status(400).json({ error: "Invalid email format" });
         }
 
-        if (!firstname || !lastname || !email || !password) {
+        if (!firstname || !email || !password || !mobile) {
             return res.status(400).json({ message: "All fields are required" });
         }
 
@@ -43,7 +42,6 @@ export const registerUser = async (req, res) => {
 
         const newUser = new User({
             firstname,
-            lastname,
             email,
             mobile,
             password: hashedPassword
@@ -58,7 +56,6 @@ export const registerUser = async (req, res) => {
             user: {
                 _id: newUser._id,
                 firstname: newUser.firstname,
-                lastname: newUser.lastname,
                 email: newUser.email,
                 mobile: newUser.mobile
             }
@@ -89,13 +86,12 @@ export const loginUser = async (req, res) => {
         }
 
         generateTokenAndSetCookie(user._id, res);
-        
+
         res.status(200).json({
             message: "Login successful",
             user: {
                 _id: user._id,
                 firstname: user.firstname,
-                lastname: user.lastname,
                 email: user.email,
                 mobile: user.mobile
             }

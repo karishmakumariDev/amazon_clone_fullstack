@@ -1,6 +1,6 @@
 
 import { useQuery } from '@tanstack/react-query';
-import { fetchUsers } from '../api/apicall'
+import {  fetchUsers } from '../api/apicall'
 
 export const useFetchProduct = () => {
   return useQuery({
@@ -15,4 +15,5 @@ export const useFetchProduct = () => {
 //     queryFn: getByProductId(id),
 //   });
 // };
+
 

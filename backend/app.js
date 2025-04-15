@@ -14,13 +14,14 @@ dotenv.config();
 const app = express();
 app.use(cookieParser());
 app.use(express.json());
-const corsOptions = {
-    origin: '*', // Allow all origins
+
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
-};
+}));
 
-app.use(cors(corsOptions));
 const PORT = 8000;
 
 app.get("/check", (req, res) => {

@@ -29,5 +29,28 @@ export const fetchUsers = async () => {
 //   };
 
 
-  
+export const fetchUser = async (userData) => {
+  try {
+    console.log("Calling API with:", userData); 
 
+    const response = await axios.post('/api/auth/register', userData);
+    console.log("API Response:", response.data); // Optional
+    return response.data;
+  } catch (error) {
+    console.error("API error:", error.response?.data || error.message);
+    throw error;
+  }
+};
+
+export const fetchUserlogin = async (userData) => {
+  try {
+    console.log("Calling API with:", userData); 
+
+    const response = await axios.post('/api/auth/login', userData);
+    console.log("API Response:", response.data); 
+    return response.data;
+  } catch (error) {
+    console.error("API error:", error.response?.data || error.message);
+    throw error;
+  }
+};

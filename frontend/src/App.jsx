@@ -8,6 +8,10 @@ import SignUp from './components/signing/singUp/signUp/SignUp';
 import SingIn from './components/signing/SingIn';
 import Cart from './components/cart_section/cart';
 import Shoping_cart from './components/shop_cart/Shoping_cart';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 function App() {
   return (
@@ -20,6 +24,7 @@ function App() {
          <Route path="/cart-section/:id" element={<Cart />} />
          <Route path="/shoping_section/:id" element={<Shoping_cart />} />
       </Routes>
+      <ToastContainer />
       <Footer/>
     </div>
   );
