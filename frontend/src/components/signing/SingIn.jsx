@@ -1,25 +1,45 @@
-import React, { useState } from 'react'
-import "./Signin.css"
+import React, { useState } from 'react';
+import "./Signin.css";
+import { useFetchUserForLogin } from "../../hooks/userfetch";
 
-const SingIn = () => {
-  const [loginform, setLonginForm] = useState({
+const SignIn = () => {
+  const [loginform, setLoginForm] = useState({
     email: "",
     password: "",
-  })
+  });
 
+  const [errors, setErrors] = useState({});
+  const { mutate, isLoading } = useFetchUserForLogin(); 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log("name",name);
-    console.log("value",value)
-    setLonginForm((prevForm) => ({
+    setLoginForm((prevForm) => ({
       ...prevForm,
       [name]: value,
     }));
   };
- 
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(loginform); 
+    setErrors({});
+    mutate(loginform, {
+      onSuccess: () => {
+        setLoginForm({ email: "", password: "" });
+        setErrors({});
+        // you can navigate to homepage here if needed
+
+      },
+      onError: (error) => {
+        const msg = error.response?.data?.message || "Invalid credentials";
+
+        if (msg.includes("email")) {
+          setErrors({ email: "Email not found" });
+        } else if (msg.includes("password")) {
+          setErrors({ password: "Incorrect password" });
+        } else {
+          setErrors({ general: msg });
+        }
+      },
+    });
   };
 
   return (
@@ -36,6 +56,7 @@ const SingIn = () => {
             onChange={handleChange}
             required
           />
+          {errors.email && <p className="error-msg">{errors.email}</p>}
 
           <label>Password</label>
           <input
@@ -46,12 +67,18 @@ const SingIn = () => {
             onChange={handleChange}
             required
           />
+          {errors.password && <p className="error-msg">{errors.password}</p>}
+          {errors.general && <p className="error-msg">{errors.general}</p>}
 
-          <button type="submit">Sign-In</button>
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? "Logging in..." : "Sign-In"}
+          </button>
         </form>
 
         <p>
-          By continuing, you agree to Amazon's <a href="#">Conditions of Use</a> and <a href="#">Privacy Notice</a>.
+          By continuing, you agree to Amazon's{" "}
+          <a href="#">Conditions of Use</a> and{" "}
+          <a href="#">Privacy Notice</a>.
         </p>
 
         <div className="signin-help">
@@ -64,8 +91,8 @@ const SingIn = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SingIn
+export default SignIn;
 

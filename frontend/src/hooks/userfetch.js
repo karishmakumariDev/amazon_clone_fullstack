@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { fetchUser } from '../api/apicall'; 
+import { fetchUser,fetchUserlogin } from '../api/apicall'; 
 import { toast } from 'react-toastify'
 
 export const useFetchUserRegister = () => {
@@ -21,6 +21,15 @@ export const useFetchUserRegister = () => {
 
 export const useFetchUserForLogin = () => {
     const mutation = useMutation({
-        mutationFn:useFeach
+        mutationFn:fetchUserlogin,
+        onSuccess:(data) => {
+            console.log("API CALL SUCCES",data);
+            toast.success("Login successfully")
+        },
+        onError: (error) => {
+            const message = error.response?.data?.message || "Something went wrong";
+            toast.error(message); 
+        }
     }) 
+    return mutation 
 }
