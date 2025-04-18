@@ -1,9 +1,9 @@
 import express from "express";
-
-import {postProducts, getProducts} from "../controllers/productController.js";
+//import { protectRoute } from "../mildeware/protectRoute.js";
+import {postProducts, getProducts,getproductid} from "../controllers/productController.js";
 const router = express.Router();
 
 router.post("/product", postProducts);
 router.get("/getproduct", getProducts);
-//router.get("/getProduct/:id",getproductid);
+router.get("/getProduct/:id",getproductid);
 export default router;

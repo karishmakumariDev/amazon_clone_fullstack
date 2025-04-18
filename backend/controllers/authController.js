@@ -49,8 +49,6 @@ export const registerUser = async (req, res) => {
 
         await newUser.save();
 
-        generateTokenAndSetCookie(newUser._id, res);
-
         res.status(201).json({
             message: "User registered successfully!",
             user: {
@@ -76,6 +74,7 @@ export const loginUser = async (req, res) => {
         }
 
         const user = await User.findOne({ email });
+        console.log(user._id);
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
