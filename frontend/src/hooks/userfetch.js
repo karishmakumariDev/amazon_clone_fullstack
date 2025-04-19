@@ -1,5 +1,5 @@
-import { useMutation } from '@tanstack/react-query';
-import { fetchUser,fetchUserlogin } from '../api/apicall'; 
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { fetchUser,fetchUserlogin, getUserId } from '../api/apicall'; 
 import { toast } from 'react-toastify'
 
 export const useFetchUserRegister = () => {
@@ -33,3 +33,10 @@ export const useFetchUserForLogin = () => {
     }) 
     return mutation 
 }
+
+export const useFetchUserId = (id) => {
+    return useQuery({
+        queryKey: ["user", id], 
+        queryFn: () => getUserId(id),
+    });
+};

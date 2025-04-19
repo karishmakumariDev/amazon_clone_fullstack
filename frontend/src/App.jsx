@@ -12,7 +12,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-
 function App() {
   return (
     <div>
@@ -21,7 +20,7 @@ function App() {
          <Route path="/" element={<Maincamp/>}></Route>
          <Route path="/login" element={ <SingIn/>}></Route>
          <Route path="/register" element={<SignUp/>}></Route>
-         <Route path="/cart-section/:id" element={<Cart />} />
+         <Route path="/cart-section/:_id" element={<Cart />} />
          <Route path="/shoping_section/:id" element={<Shoping_cart />} />
       </Routes>
       <ToastContainer />

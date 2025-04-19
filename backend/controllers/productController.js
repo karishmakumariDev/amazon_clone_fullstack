@@ -37,21 +37,24 @@ export const getProducts = async (req, res) => {
   }
 };
 
+export const getProductById = async(req, res) => {
+  try {
+    console.log("get By product Id");
+    console.log(req.params._id); 
+    
+    const product = await Product.findOne({ _id: req.params._id }); 
 
-export const getproductid = async (req, res) => {
-    try {
-      const { id } = req.params;
-      console.log("Get Product By ID:", id);
-  
-      const product = await Product.findOne({ id: id });
-  
-      if (!product) {
-        return res.status(404).json({ message: "Product not found" });
-      }
-  
-      res.status(200).json(product);
-    } catch (error) {
-      res.status(500).json({ message: "Error while getting product", error });
+    if (!product) {
+      return res.status(400).json({ message: "Product not found" });  
     }
-  };
-  
+
+    res.status(200).json({
+      message: "Existing product",
+      product,
+    });
+    
+  } catch (error) {
+    console.error("Error:", error); 
+    res.status(500).json({ message: "Failed to fetch product by id" });
+  }
+};

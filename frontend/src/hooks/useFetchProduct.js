@@ -1,6 +1,6 @@
 
 import { useQuery } from '@tanstack/react-query';
-import {  fetchUsers } from '../api/apicall'
+import {  fetchUsers,getByProductId } from '../api/apicall'
 
 export const useFetchProduct = () => {
   return useQuery({
@@ -9,11 +9,11 @@ export const useFetchProduct = () => {
   });
 };
 
-// export const useFetchByProductId = (id) => {
-//   return useQuery({
-//     queryKey: ['products', id],
-//     queryFn: getByProductId(id),
-//   });
-// };
+export const useFetchByProductId = (_id) => {
+  return useQuery({
+    queryKey: ['products', _id],
+    queryFn: () => getByProductId(_id),
+  });
+};
 
 
