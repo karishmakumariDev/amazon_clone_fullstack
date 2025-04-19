@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // Carousel ka CSS
@@ -5,13 +6,8 @@ import "./Banner.css";
 import post1 from "../../assets/post1.png";
 //import post2 from '../../assets/post2.png';
 import post3 from "../../assets/post3.png";
-import { useNavigate } from "react-router-dom";
-
-
-
 
 const Banner = () => {
-
   const data = [
     {
       name: "Mobile Phones",
@@ -35,12 +31,6 @@ const Banner = () => {
     },
   ];
 
-  const navigate = useNavigate();
-
-  const handleClick = (id) => {
-    navigate(`/cart-section/${id}`);
-  };
-
   return (
     <div>
       <h2>Banner</h2>
@@ -60,19 +50,11 @@ const Banner = () => {
         }}
       >
         {data.map((item, index) => (
-          // <div key={index}>
-          //   <a href={item.url} target="_blank" rel="noopener noreferrer">
-          //     <img src={item.image} alt={item.name} />
-          //     <p className="legend">{item.name}</p>
-          //   </a>
-          // </div>
-          <div
-            key={index}
-            onClick={() => handleClick(item._id)}
-            style={{ cursor: "pointer" }}
-          >
-            <img src={item.image} alt={item.name} />
-            <p className="legend">{item.name}</p>
+          <div key={index}>
+            <a href={item.url} target="_blank" rel="noopener noreferrer">
+              <img src={item.image} alt={item.name} />
+              <p className="legend">{item.name}</p>
+            </a>
           </div>
         ))}
       </Carousel>
@@ -81,3 +63,4 @@ const Banner = () => {
 };
 
 export default Banner;
+

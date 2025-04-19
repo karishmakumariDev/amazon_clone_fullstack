@@ -6,6 +6,8 @@ import "react-multi-carousel/lib/styles.css";
 import { Divider } from '@mui/material';
 import "./Slide.css";
 import { useFetchProduct } from '../../hooks/useFetchProduct'; // Import the custom hook
+import { useNavigate } from 'react-router-dom';
+
 
 const responsive = {
   desktop: { breakpoint: { max: 3000, min: 1024 }, items: 4 },
@@ -14,6 +16,9 @@ const responsive = {
 };
 
 const Slide = ({ title }) => {
+  const navigate = useNavigate();
+
+
   const { data: product = [], isLoading, error } = useFetchProduct();
 
   console.log("data",product);
@@ -21,6 +26,10 @@ const Slide = ({ title }) => {
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
+  const handleClick = (id) => {
+    navigate(`/cart-section/${id}`);
+  };
+  
   return (
     <div className='products_section'>
       <div>
@@ -44,7 +53,7 @@ const Slide = ({ title }) => {
         containerClass="carousel-container"
       >
         {product.map((e) => (
-          <div className="products_items" key={e.id}>
+          <div className="products_items" key={e.id} onClick={() => handleClick(e._id)} style={{ cursor: "pointer" }}>
             <div className="product_img">
               <img src={e.url} alt="product" />
             </div>
