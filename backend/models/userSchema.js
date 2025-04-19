@@ -38,8 +38,7 @@ const userSchema = new mongoose.Schema({
                 required: true
             }
         }
-    ],
-    carts: Array 
+    ], 
 }, {
     timestamps: true
 });
