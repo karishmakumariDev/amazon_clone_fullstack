@@ -30,7 +30,7 @@ export const fetchUser = async (userData) => {
     console.log("Calling API with:", userData);
 
     const response = await axios.post("/api/auth/register", userData);
-    console.log("API Response:", response.data.product); // Optional
+    console.log("API Response:", response.data.product); 
     return response.data;
   } catch (error) {
     console.error("API error:", error.response?.data || error.message);
@@ -42,7 +42,9 @@ export const fetchUserlogin = async (userData) => {
   try {
     console.log("Calling API with:", userData);
 
-    const response = await axios.post("/api/auth/login", userData);
+    const response = await axios.post("/api/auth/login", userData, {
+      withCredentials: true 
+    });
     console.log("API Response:", response.data);
     return response.data;
   } catch (error) {
