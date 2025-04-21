@@ -6,7 +6,7 @@ import "./DB/connectmongose.js"
 import cors from 'cors';
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/authRoutes.routes.js"
-
+import cartRoutes from "./routes/cartRoutes.routes.js"
 
 
 dotenv.config();
@@ -29,6 +29,7 @@ app.get("/check", (req, res) => {
 } )
 app.use("/api", productRoutes);
 app.use("/api/auth", authRoutes);
+app.use('/api/cart', cartRoutes);
 async function startServer() {
     try {
         await connectmongose();

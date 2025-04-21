@@ -78,7 +78,7 @@ export const loginUser = async (req, res) => {
     }
 
     const user = await User.findOne({ email });
-    console.log(user._id);
+    // console.log(user.id);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -88,6 +88,7 @@ export const loginUser = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
+    console.log("user._id",user._id)
     generateTokenAndSetCookie(user._id, res);
 
     res.status(200).json({
