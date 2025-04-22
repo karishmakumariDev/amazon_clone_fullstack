@@ -20,6 +20,7 @@ const Slide = ({ title }) => {
 
 
   const { data: product = [], isLoading, error } = useFetchProduct();
+  
 
   console.log("data",product);
 

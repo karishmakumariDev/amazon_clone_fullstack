@@ -1,8 +1,19 @@
-import React from 'react';
+//import React, { use } from "react";
 import { ShoppingCart, Menu, Search } from "lucide-react";
 import "./Navbar.css";
+import { useFetchgetLengh } from "../../hooks/userFetchCart";
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const navigate = useNavigate(); 
+  const { data, isLoading } = useFetchgetLengh();
+
+  console.log("cartLength", data);
+
+   const handleCartClick = () => {
+     navigate("/shoping_section/:id");
+   }
+
   return (
     <header className="navbar">
       <div className="navbar-top">
@@ -17,7 +28,7 @@ const Navbar = () => {
 
         {/* Search Bar */}
         <div className="navbar-search">
-          <input type="text"  />
+          <input type="text" />
           <button>
             <Search size={18} />
           </button>
@@ -33,9 +44,11 @@ const Navbar = () => {
             <p>Returns</p>
             <p className="bold">& Orders</p>
           </div>
-          <div className="navbar-cart">
+          <div className="navbar-cart"  onClick={handleCartClick} style={{ cursor: "pointer" }}>
             <ShoppingCart size={20} />
-            <span className="cart-count">0</span>
+            <span className="cart-count">
+              {isLoading ? "..." : data?.cartLength ?? 0}
+            </span>
             <p>Cart</p>
           </div>
         </div>

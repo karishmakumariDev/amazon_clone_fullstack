@@ -18,6 +18,19 @@ export const fetchAddToCart = async (_id) => {
   }
 };
 
+export const getcartListLenght = async () => {
+  try {
+    const response = await axios.get("/api/cart/getcartLength", {
+      withCredentials: true
+    });
+    console.log("response data", response.data);
+    return response.data;
+  } catch (error) {
+    console.log("api not calling", error);
+    throw error;
+  }
+};
+
 
 
   

@@ -1,6 +1,7 @@
 import Cart from "../models/CartSchema.js";
 import User from "../models/userSchema.js";
 import Product from "../models/ProductSchema.js";
+
 export const AddToCart = async (req, res) => {
   try {
     console.log("Add-To-Cart");
@@ -21,7 +22,7 @@ export const AddToCart = async (req, res) => {
     const productId = product._id;
     console.log("productId", productId);
 
-    const quantity =  1;
+    const quantity = 1;
     console.log("quantity", quantity);
 
     let cart = await Cart.findOne({ userId });
@@ -49,5 +50,36 @@ export const AddToCart = async (req, res) => {
   } catch (error) {
     console.error("AddToCart Error:", error);
     return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const getLength = async (req, res) => {
+  console.log("get length");
+
+  try {
+    console.log("userExisting", req.user);
+    console.log("req.user", req.user._id);
+
+    const userId = req.user._id;
+    console.log("userId", userId);
+
+    if (!userId) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const cart = await Cart.findOne({ userId });
+    console.log("cart", cart);
+
+    if (!cart) {
+      return res.status(404).json({ message: "Cart not found" });
+    }
+
+    const cartLength = cart.cartList.length;
+    console.log("cartLength", cartLength);
+
+    return res.status(200).json({ cartLength });
+  } catch (error) {
+    console.error("Error getting cart length:", error);
+    return res.status(500).json({ message: "Server error" });
   }
 };
