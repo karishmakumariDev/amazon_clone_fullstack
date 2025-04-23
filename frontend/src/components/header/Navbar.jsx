@@ -11,7 +11,7 @@ const Navbar = () => {
   console.log("cartLength", data);
 
    const handleCartClick = () => {
-     navigate("/shoping_section/:id");
+     navigate("/shoping_section");
    }
 
   return (

@@ -21,7 +21,7 @@ function App() {
          <Route path="/login" element={ <SingIn/>}></Route>
          <Route path="/register" element={<SignUp/>}></Route>
          <Route path="/cart-section/:_id" element={<Cart />} />
-         <Route path="/shoping_section/:id" element={<Shoping_cart />} />
+         <Route path="/shoping_section" element={<Shoping_cart />} />
       </Routes>
       <ToastContainer />
       <Footer/>

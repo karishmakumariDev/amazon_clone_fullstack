@@ -31,6 +31,41 @@ export const getcartListLenght = async () => {
   }
 };
 
+export const getCartList = async () => {
+  try {
+    const response = await axios.get("/api/cart/showCartList", {
+      withCredentials: true  
+    });
+    console.log("response data", response.data);
+    return response.data;
+  } catch (error) {
+    console.log("API call failed:", error.response ? error.response.data : error.message);
+    throw error;
+  }
+};
 
+export const increseqan = async (productId) => {
+  try {
+    const response = await axios.patch("/api/cart/increaseQuantity", { productId },{
+      withCredentials: true  
+    });
+    console.log("response data", response.data);
+    return response.data;
+  } catch (error) {
+    console.log("API call failed:", error.response ? error.response.data : error.message);
+    throw error;
+  } 
+}
 
-  
+export const decreaseQuan = async(productId) => {
+  try {
+    const response = await axios.patch("/api/cart/decreaseQuantity",{productId}, {
+      withCredentials: true  
+    });
+    console.log("response data", response.data);
+    return response.data;
+  } catch (error) {
+    console.log("API call failed:", error.response ? error.response.data : error.message);
+    throw error;
+  } 
+}

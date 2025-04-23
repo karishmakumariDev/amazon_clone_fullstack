@@ -1,5 +1,5 @@
 import { useMutation, useQuery,useQueryClient } from "@tanstack/react-query";
-import { getcartListLenght, fetchAddToCart } from "../api/cartApiCall";
+import { getcartListLenght, fetchAddToCart ,getCartList,increseqan,decreaseQuan} from "../api/cartApiCall";
 import { toast } from "react-toastify";
 
 
@@ -28,4 +28,24 @@ export const useFetchAddtocart = () => {
   });
 
   return mutation; 
+};
+
+export const useGetCartList = () => {
+  return useQuery({
+    queryKey: ["cartList"],
+    queryFn:getCartList
+  });
+};
+
+
+
+export const useIncreaseQuantity = () => {
+  return useMutation({
+    mutationFn: (productId) => increseqan(productId),
+  });
+};
+export const useDecreaseQuantity = () => {
+  return useMutation({
+    mutationFn: (productId) => decreaseQuan(productId),
+  });
 };
